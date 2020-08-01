@@ -13,7 +13,7 @@ router.get("/api/workouts", (req, res) => {
 });
 
 // create new workout
-router.post("api/workouts", (req, res) => {
+router.post("/api/workouts", (req, res) => {
     db.Workout.create({})
         .then(newWorkout => {
             res.json(newWorkout);
@@ -24,7 +24,7 @@ router.post("api/workouts", (req, res) => {
 });
 
 // add new exercises to existing workouts
-router.put("api/workouts/:workout", ({ params, body }, res) => {
+router.put("/api/workouts/:workout", ({ params, body }, res) => {
     db.Workout.findOneAndUpdate(
         { _id: params.id },
         { $push: { exercises: body } },
